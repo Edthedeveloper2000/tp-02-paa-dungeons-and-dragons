@@ -2,7 +2,7 @@
 #ifndef DUNGEON_H
 #define DUNGEON_H
 
-typedef struct Dungeon {
+typedef struct {
   int width;
   int height;
   char **grid;
