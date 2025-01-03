@@ -1,9 +1,11 @@
 #include "../../../common.h"
+#include "../../types/dungeon/dungeon.h"
 
-#ifndef FILE_READER
-#define FILE_READER
+#ifndef FILE_READER_H
+#define FILE_READER_H
 
 
-void fileReader(char * path);
+Dungeon * readDungeon(char * path);
+void freeDungeon(Dungeon *dungeon);
 
 #endif

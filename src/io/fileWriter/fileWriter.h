@@ -1,7 +1,7 @@
 #include "../../../common.h"
 
-#ifndef FILE_READER
-#define FILE_READER
+#ifndef FILE_WRITER_H
+#define FILE_WRITER_H
 
 
 void fileWriter(char * path);
