@@ -15,7 +15,7 @@ int main() {
     }
 
     printf("Dungeon successfully read!\nDimensions: %d x %d\nInitial Health: %d\n",
-           dungeon->height, dungeon->width, dungeon->initial_health);
+           dungeon->width, dungeon->height, dungeon->initial_health);
 
     printf("Start Point: (%d, %d)\n", dungeon->start_x, dungeon->start_y);
     printf("End Point: (%d, %d)\n", dungeon->end_x, dungeon->end_y);

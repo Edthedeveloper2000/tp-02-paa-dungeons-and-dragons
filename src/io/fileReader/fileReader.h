@@ -5,7 +5,7 @@
 #define FILE_READER_H
 
 
-Dungeon * readDungeon(char * path);
+Dungeon *readDungeon(char *path);
 void freeDungeon(Dungeon *dungeon);
 
 #endif

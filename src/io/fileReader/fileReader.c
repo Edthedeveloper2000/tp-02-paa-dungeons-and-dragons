@@ -1,6 +1,6 @@
 #include "fileReader.h"
 
-Dungeon * readDungeon(char *filePath) {
+Dungeon *readDungeon(char *filePath) {
     FILE *file = fopen(filePath, "r");
     if (!file) {
         fprintf(stderr, "Error opening file: %s\n", filePath);

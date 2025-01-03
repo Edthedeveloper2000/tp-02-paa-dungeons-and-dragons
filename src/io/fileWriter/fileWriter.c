@@ -1,6 +1,6 @@
 #include "fileWriter.h"
 
 
-void fileReader(char * path) {
+void fileWriter(char *path) {
     
 }

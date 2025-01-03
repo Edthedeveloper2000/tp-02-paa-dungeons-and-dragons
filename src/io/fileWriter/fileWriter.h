@@ -4,6 +4,6 @@
 #define FILE_WRITER_H
 
 
-void fileWriter(char * path);
+void fileWriter(char *path);
 
 #endif
