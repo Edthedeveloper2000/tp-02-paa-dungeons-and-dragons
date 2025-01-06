@@ -5,7 +5,7 @@
 typedef struct {
   int width;
   int height;
-  char **grid;
+  int **grid;
   int initial_health;
   int start_x;       
   int start_y;       
