@@ -16,12 +16,12 @@ Dungeon *readDungeon(char *filePath) {
     }
 
     // Read dimensions and initial health points
-    fscanf(file, "%d %d %d", &dungeon->width, &dungeon->height, &dungeon->initial_health);
+    fscanf(file, "%d %d %d", &dungeon->height, &dungeon->width, &dungeon->initial_health);
 
     // Allocate memory for the grid
-    dungeon->grid = malloc(dungeon->width * sizeof(int *));
-    for (int i = 0; i < dungeon->width; i++) {
-        dungeon->grid[i] = malloc(dungeon->height * sizeof(int));
+    dungeon->grid = malloc(dungeon->height * sizeof(int *));
+    for (int i = 0; i < dungeon->height; i++) {
+        dungeon->grid[i] = malloc(dungeon->width * sizeof(int));
     }
 
     // Initialize start and end points as invalid
@@ -29,19 +29,19 @@ Dungeon *readDungeon(char *filePath) {
     dungeon->end_x = dungeon->end_y = -1;
 
     // Read the grid values
-    for (int i = 0; i < dungeon->width; i++) {
-        for (int j = 0; j < dungeon->height; j++) {
+    for (int i = 0; i < dungeon->height; i++) {
+        for (int j = 0; j < dungeon->width; j++) {
             char buffer[10];
             fscanf(file, "%s", buffer);
 
             if (strcmp(buffer, "I") == 0) {
                 dungeon->start_x = i;
                 dungeon->start_y = j;
-                dungeon->grid[i][j] = 0; // Set to zero to avoid affecting calculations
+                dungeon->grid[i][j] = -1; // Set to zero to avoid affecting calculations
             } else if (strcmp(buffer, "F") == 0) {
                 dungeon->end_x = i;
                 dungeon->end_y = j;
-                dungeon->grid[i][j] = 0; // Set to zero to avoid affecting calculations
+                dungeon->grid[i][j] = -1; // Set to zero to avoid affecting calculations
             } else {
                 dungeon->grid[i][j] = atoi(buffer); // Convert the value to an integer
             }
