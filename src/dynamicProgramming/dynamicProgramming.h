@@ -4,6 +4,8 @@
 #ifndef DYNAMIC_PROGRAMMING_H
 #define DYNAMIC_PROGRAMMING_H
 
+
+
 typedef struct {
     int health;   // Maximum health at this cell
     int from_x;   // Predecessor's x coordinate
@@ -14,7 +16,7 @@ Cell **initializeDP(Dungeon *dungeon);
 
 void freeDP(Cell **dp, int height);
 
-void calculateDP(Dungeon *dungeon, Cell **dp);
+void calculateDP(Dungeon *dungeon, Cell **dp, int i, int j);
 
 void reconstructPath(Dungeon *dungeon, Cell **dp, const char *outputFile);
 

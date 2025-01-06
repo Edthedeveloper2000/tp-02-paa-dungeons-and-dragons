@@ -36,7 +36,7 @@ int main() {
     Cell **dp = initializeDP(dungeon);
 
     // Calculate the DP values and reconstruct the path
-    calculateDP(dungeon, dp);
+    calculateDP(dungeon, dp, dungeon->start_x, dungeon->start_y);
     reconstructPath(dungeon, dp, outputFile);
 
     printf("Dungeon processed successfully. Results saved to: %s\n", outputFile);
