@@ -6,6 +6,7 @@
 
 
 Dungeon *readDungeon(char *path);
+
 void freeDungeon(Dungeon *dungeon);
 
 #endif

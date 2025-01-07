@@ -6,9 +6,7 @@ Cell **initializeDP(Dungeon *dungeon) {
         dp[i] = malloc(dungeon->width * sizeof(Cell));
         for (int j = 0; j < dungeon->width; j++) {
             if(dungeon->grid[i][j] == 0) {
-                dp[i][j].health = 0; 
-                dp[i][j].from_x = -1;
-                dp[i][j].from_y = -1;
+                dp[i][j].health = 0;
             } else {
                 dp[i][j].health = INT_MIN;
             }
@@ -27,8 +25,6 @@ void freeDP(Cell **dp, int height) {
 }
 
 void calculateDP(Dungeon *dungeon, Cell **dp, int i, int j) {
-    if (dp[i][j].from_x == -1) return; // Skip unreachable cells
-
     if(i != dungeon->start_x || j != dungeon->start_y) {
         if( i + 1 == dungeon->height  && j + 1 < dungeon->width) {
             dp[i][j].health = dp[i][j + 1].health + dungeon->grid[i][j];
