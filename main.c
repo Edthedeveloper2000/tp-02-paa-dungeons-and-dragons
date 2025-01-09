@@ -4,6 +4,7 @@
 #include "src/generateRandomDungeon/generateRandomDungeon.h"
 #include <time.h> 
 #include "common.h"
+#include "src/utils/utils.h"
 
 
 int main() {
@@ -74,68 +75,4 @@ int main() {
     freeDungeon(dungeon);
 
     return 0;
-}
-
-
-void printResultsToTerminal(Dungeon *dungeon, Cell **dp) {
-    if (dp[dungeon->end_x][dungeon->end_y].health < 0) {
-        printf("impossível\n");
-        return;
-    }
-
-    int path[dungeon->height * dungeon->width][2];
-    int path_length = 0;
-
-    int x = dungeon->end_x;
-    int y = dungeon->end_y;
-
-    path[path_length][0] = x;
-    path[path_length][1] = y;
-    while (x != dungeon->start_x || y != dungeon->start_y) {
-        path_length++;
-        int next_x = dp[x][y].from_x;
-        int next_y = dp[x][y].from_y;
-        x = next_x;
-        y = next_y;
-        path[path_length][0] = x;
-        path[path_length][1] = y;
-    }
-
-    printf("\nCaminho percorrido (marcado como [E]):\n");
-    printDungeon(dungeon, path, path_length + 1);
-}
-
-
-
-void printDungeon(Dungeon *dungeon, int path[][2], int path_length) {
-    printf("\nCaverna:\n");
-    for (int i = 0; i < dungeon->height; i++) {
-        for (int j = 0; j < dungeon->width; j++) {
-            int isPath = 0;
-
-            for (int k = 0; k < path_length; k++) {
-                if (path[k][0] == i && path[k][1] == j) {
-                    isPath = 1;
-                    break;
-                }
-            }
-
-            if (isPath) {
-                printf("\033[1;34m[E]\033[0m ");
-            } else if (i == dungeon->start_x && j == dungeon->start_y) {
-                printf("\033[1;34m[I]\033[0m ");
-            } else if (i == dungeon->end_x && j == dungeon->end_y) {
-                printf("\033[1;93m[F]\033[0m ");
-            } else if (dungeon->grid[i][j] == 20) {
-                printf("\033[1;32m[+20]\033[0m ");
-            } else if (dungeon->grid[i][j] == -20) {
-                printf("\033[1;31m[-20]\033[0m ");
-            } else if (dungeon->grid[i][j] == -10) {
-                printf("\033[1;33m[-10]\033[0m ");
-            } else {
-                printf("[0] ");
-            }
-        }
-        printf("\n");
-    }
 }
