@@ -13,11 +13,12 @@ Dungeon *generateRandomDungeon(int height, int width, int initial_health) {
     dungeon->initial_health = initial_health;
 
     dungeon->grid = malloc(height * sizeof(int *));
+
     for (int i = 0; i < height; i++) {
         dungeon->grid[i] = malloc(width * sizeof(int));
         for (int j = 0; j < width; j++) {
             int values[] = {0, -10, -20, 20};
-            dungeon->grid[i][j] = values[rand() % 4];
+            dungeon->grid[i][j] = values[rand() % 4]; // Popula células com valores aleatórios
         }
     }
 
@@ -32,7 +33,7 @@ Dungeon *generateRandomDungeon(int height, int width, int initial_health) {
     dungeon->grid[dungeon->start_x][dungeon->start_y] = -1; // I
     dungeon->grid[dungeon->end_x][dungeon->end_y] = -1;    // F
 
-    int emptyPath[1][2] = {{-1, -1}}; // Sem caminho no momento
+    int emptyPath[1][2] = {{-1, -1}};
     printDungeon(dungeon, emptyPath, 0);
 
     return dungeon;
