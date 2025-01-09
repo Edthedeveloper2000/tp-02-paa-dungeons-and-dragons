@@ -32,23 +32,8 @@ Dungeon *generateRandomDungeon(int height, int width, int initial_health) {
     dungeon->grid[dungeon->start_x][dungeon->start_y] = -1; // I
     dungeon->grid[dungeon->end_x][dungeon->end_y] = -1;    // F
 
-    printf("\nCaverna Gerada Aleatoriamente:\n");
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            if (i == dungeon->start_x && j == dungeon->start_y) {
-                printf("[I]");
-            } else if (i == dungeon->end_x && j == dungeon->end_y) {
-                printf("[F]");
-            } else {
-                if (dungeon->grid[i][j] >= 0) {
-                    printf("[+%d]", dungeon->grid[i][j]);
-                } else {
-                    printf("[%d]", dungeon->grid[i][j]);
-                }
-            }
-        }
-        printf("\n");
-    }
+    int emptyPath[1][2] = {{-1, -1}}; // Sem caminho no momento
+    printDungeon(dungeon, emptyPath, 0);
 
     return dungeon;
 }

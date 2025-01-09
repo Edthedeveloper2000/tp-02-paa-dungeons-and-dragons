@@ -13,4 +13,10 @@ typedef struct {
   int end_y;          
 } Dungeon;
 
+typedef struct {
+    int health;  
+    int from_x;   
+    int from_y;   
+} Cell;
+
 #endif
